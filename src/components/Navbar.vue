@@ -32,8 +32,9 @@
 </template>
 
 <script>
-    export default {
-        name: "Navbar"
+export default {
+    mounted() {
+        console.log(this.$root)
     }
+}
 </script>
-

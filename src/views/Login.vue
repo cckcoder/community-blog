@@ -1,5 +1,5 @@
 <template>
-	<div class="row">
+	<div class="row my-5">
 		<div class="col-md-6 offset-md-3">
 			<div class="card">
 				<div class="card-body">
@@ -11,7 +11,7 @@
 						<input class="form-control" placeholder="Password" type="PASSWORD">
 					</div>
 					<div class="form-group text-center">
-						<button class="btn btn-success">Login</button>
+						<button class="btn btn-success form-control">Login</button>
 					</div>
 				</div>
 			</div>
