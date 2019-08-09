@@ -10,21 +10,31 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-								<li class="nav-item">
+								<li class="nav-item" v-if="!authUser">
 									<router-link class="nav-link" to="/login">Login</router-link>
 								</li>
 
-								<li class="nav-item">
+								<li class="nav-item" v-if="!authUser">
 										<router-link class="nav-link" to="/Signup">Signup</router-link>
 								</li>
 
-								<!-- 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hey Bahdcode</a>
+
+                <li class="nav-item dropdown" v-if="authUser">
+                    <a 
+											class="nav-link dropdown-toggle" 
+											href="#" 
+											id="navbarDropdown" 
+											role="button" 
+											data-toggle="dropdown" 
+											aria-haspopup="true" 
+											aria-expanded="false">
+											Hey {{ authUser.name }}
+										</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Logout</a>
                     </div>
-                </li>-->
+                </li>
+
             </ul> 
         </div>
 			</div>
@@ -35,6 +45,11 @@
 export default {
     mounted() {
         console.log(this.$root)
-    }
+    },
+		computed: {
+			authUser() {
+				return this.$root.auth.user
+			}
+		}
 }
 </script>

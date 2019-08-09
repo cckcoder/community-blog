@@ -7,10 +7,16 @@
 
 					<div class="form-group">
 						<input v-model="name" class="form-control" placeholder="Name" type="TEXT">
+						<div class="errors" v-if="errors.name">
+							<small class="text-danger" :key="error" v-for="error in errors.name">{{ error }}</small>
+						</div>
 					</div>
 
 					<div class="form-group">
 						<input v-model="email" class="form-control" placeholder="Email" type="TEXT">
+						<div class="errors" v-if="errors.email">
+							<small class="text-danger" :key="error" v-for="error in errors.email">{{ error }}</small>
+						</div>
 					</div>
 
 					<div class="form-group">
@@ -37,6 +43,7 @@ export default {
 			name: '',
 			email: '',
 			password: '',
+			errors: {}
 		}
 	},
 	methods: {
@@ -52,6 +59,7 @@ export default {
 				this.$root.auth = data
 				this.$router.push('home')
 			}).catch(response => {
+				this.errors = response.data
 				console.log(response) 
 			})
 		}
